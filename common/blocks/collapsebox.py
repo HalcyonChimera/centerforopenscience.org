@@ -1,4 +1,4 @@
-from wagtail.wagtailcore.blocks import RichTextBlock, CharBlock, ListBlock, StructBlock
+from wagtail.core.blocks import RichTextBlock, CharBlock, ListBlock, StructBlock
 from django.utils.html import format_html, format_html_join
 
 

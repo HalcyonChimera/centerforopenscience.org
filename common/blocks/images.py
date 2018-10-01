@@ -1,7 +1,7 @@
-from wagtail.wagtailcore.blocks import CharBlock
-from wagtail.wagtailcore.blocks import ChoiceBlock
-from wagtail.wagtailcore.blocks import StructBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.core.blocks import CharBlock
+from wagtail.core.blocks import ChoiceBlock
+from wagtail.core.blocks import StructBlock
+from wagtail.images.blocks import ImageChooserBlock
 from .StructBlockWithStyle import StructBlockWithStyle
 
 IMAGE_STYLE_CHOICES = [

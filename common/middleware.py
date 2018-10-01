@@ -3,13 +3,15 @@ import re
 from django.conf import settings
 from django.http import HttpResponsePermanentRedirect
 
+from django.utils.deprecation import MiddlewareMixin
+
 # compile these on module import because performance
 URL_REGEXES = []
 for needle, replacement in settings.URL_REDIRECTS:
     URL_REGEXES.append((re.compile(needle), replacement))
 
 
-class URLRedirectMiddleware(object):
+class URLRedirectMiddleware(MiddlewareMixin):
     """
     This middleware lets you match a specific url and redirect the request to a
     new url.

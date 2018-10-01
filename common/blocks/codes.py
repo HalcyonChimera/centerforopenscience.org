@@ -1,5 +1,5 @@
 from .StructBlockWithStyle import StructBlockWithStyle
-from wagtail.wagtailcore import blocks
+from wagtail.core import blocks
 from common.blocks import LANGUAGE_CHOICES
 
 class CodeBlock(StructBlockWithStyle):

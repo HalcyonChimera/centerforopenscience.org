@@ -5,10 +5,10 @@ A block to provide a clearfix element for Wagtail's StreamField.
 """
 
 
-from wagtail.wagtailcore.blocks import IntegerBlock
-from wagtail.wagtailcore.blocks import StructBlock
+from wagtail.core.blocks import IntegerBlock
+from wagtail.core.blocks import StructBlock
 from django.db.models import IntegerField
-from wagtail.wagtailcore import blocks
+from wagtail.core import blocks
 from common.blocks.jobs import JobsWholeBlock
 from .StructBlockWithStyle import StructBlockWithStyle
 

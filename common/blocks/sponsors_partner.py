@@ -1,4 +1,4 @@
-from wagtail.wagtailcore import blocks
+from wagtail.core import blocks
 
 SPONSOR_PARTNER_DISPLAY_CHOICES = [
     ('sponsors', 'sponsors'),

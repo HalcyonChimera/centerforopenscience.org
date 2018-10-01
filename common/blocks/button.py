@@ -1,5 +1,5 @@
 from .StructBlockWithStyle import StructBlockWithStyle
-from wagtail.wagtailcore import blocks
+from wagtail.core import blocks
 
 class ButtonBlock(StructBlockWithStyle):
 

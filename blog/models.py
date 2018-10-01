@@ -9,19 +9,19 @@ from django.db.models import IntegerField
 from django.shortcuts import get_object_or_404
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
-from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailcore.models import Page, Orderable
-from wagtail.wagtailadmin.edit_handlers import (
+from wagtail.core.fields import RichTextField, StreamField
+from wagtail.core.models import Page, Orderable
+from wagtail.admin.edit_handlers import (
     FieldPanel, InlinePanel, MultiFieldPanel, FieldRowPanel, StreamFieldPanel)
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsearch import index
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
+from wagtail.search import index
 from taggit.models import TaggedItemBase, Tag
 from modelcluster.tags import ClusterTaggableManager
 from modelcluster.fields import ParentalKey
 from common.blocks.codes import CodeBlock
-from wagtail.wagtailcore.blocks import RichTextBlock
+from wagtail.core.blocks import RichTextBlock
 from common.blocks.googlecalendar import GoogleCalendarBlock
 import datetime
 from common.models import Person
@@ -142,7 +142,11 @@ class BlogCategory(models.Model):
         max_length=80, unique=True, verbose_name=_('Category Name'))
     slug = models.SlugField(unique=True, max_length=80)
     parent = models.ForeignKey(
-        'self', blank=True, null=True, related_name="children",
+        'self',
+        blank=True,
+        null=True,
+        related_name="children",
+        on_delete=models.PROTECT,
         help_text=_(
             'Categories, unlike tags, can have a hierarchy. You might have a '
             'Jazz category, and under that have children categories for Bebop'
@@ -184,14 +188,22 @@ class BlogCategory(models.Model):
 
 class BlogCategoryBlogPage(models.Model):
     category = models.ForeignKey(
-        BlogCategory, related_name="+", verbose_name=_('Category'))
+        BlogCategory,
+        related_name="+",
+        verbose_name=_('Category'),
+        on_delete=models.CASCADE
+    )
     page = ParentalKey('BlogPage', related_name='categories')
     panels = [
         FieldPanel('category'),
     ]
 
 class BlogPagePerson(Orderable, models.Model):
-    author = models.ForeignKey(Person, related_name='+')
+    author = models.ForeignKey(
+        Person,
+        related_name='+',
+        on_delete=models.CASCADE
+    )
     page = ParentalKey('BlogPage', related_name='authors')
     panels = [
         FieldPanel('author')

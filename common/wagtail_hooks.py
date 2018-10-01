@@ -4,7 +4,7 @@ from .models import Person, Job, NewsArticle, Journal, Organization
 from blog.models import BlogPage
 from django.utils.html import format_html
 from django.contrib.staticfiles.templatetags.staticfiles import static
-from wagtail.wagtailcore import hooks
+from wagtail.core import hooks
 
 #@hooks.register('insert_global_admin_css')
 #def global_admin_css():

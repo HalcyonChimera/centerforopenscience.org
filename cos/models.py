@@ -1,4 +1,4 @@
-from wagtail.wagtailcore.signals import page_published
+from wagtail.core.signals import page_published
 import logging
 import requests
 from django.conf import settings

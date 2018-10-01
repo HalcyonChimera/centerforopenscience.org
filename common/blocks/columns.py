@@ -13,10 +13,10 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.utils.html import format_html, format_html_join
 from django.utils.safestring import mark_safe
 
-from wagtail.wagtailcore.blocks.utils import js_dict
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailembeds.blocks import EmbedBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
+from wagtail.core.blocks.utils import js_dict
+from wagtail.core import blocks
+from wagtail.embeds.blocks import EmbedBlock
+from wagtail.images.blocks import ImageChooserBlock
 # from wagtail.contrib.table_block.blocks import TableBlock
 
 from common.blocks import COLOUR_CHOICES, COLUMN_CHOICES

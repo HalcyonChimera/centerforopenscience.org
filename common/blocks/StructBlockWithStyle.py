@@ -1,4 +1,4 @@
-from wagtail.wagtailcore import blocks
+from wagtail.core import blocks
 
 
 class StructBlockWithStyle(blocks.StructBlock):

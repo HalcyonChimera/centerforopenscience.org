@@ -7,11 +7,11 @@ with the Wagtail CMS.
 
 # Base Models & Utilities
 from django.contrib.auth.models import User, Group, Permission
-from wagtail.wagtailcore.models import Page
+from wagtail.core.models import Page
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.db import transaction
-from wagtail.wagtailcore.models import Site
+from wagtail.core.models import Site
 from django.core.cache import cache
 
 
@@ -31,19 +31,19 @@ from django.db.models import TextField
 from django.db.models import IntegerField
 from django.db.models import BooleanField
 from django.db.models import Model
-from wagtail.wagtailcore.fields import StreamField
-from wagtail.wagtailcore.fields import RichTextField
+from wagtail.core.fields import StreamField
+from wagtail.core.fields import RichTextField
 
 # StreamField Blocks
-from wagtail.wagtailcore import blocks
-from wagtail.wagtailcore.blocks import TextBlock
-from wagtail.wagtailcore.blocks import RichTextBlock
-from wagtail.wagtailcore.blocks import StructBlock
-from wagtail.wagtailcore.blocks import ChoiceBlock
-from wagtail.wagtailcore.blocks import CharBlock
-from wagtail.wagtailcore.blocks import RawHTMLBlock
-from wagtail.wagtailimages.blocks import ImageChooserBlock
-from wagtail.wagtailembeds.blocks import EmbedBlock
+from wagtail.core import blocks
+from wagtail.core.blocks import TextBlock
+from wagtail.core.blocks import RichTextBlock
+from wagtail.core.blocks import StructBlock
+from wagtail.core.blocks import ChoiceBlock
+from wagtail.core.blocks import CharBlock
+from wagtail.core.blocks import RawHTMLBlock
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.embeds.blocks import EmbedBlock
 from common.blocks.hero import HeroBlock
 from common.blocks.people import PeopleBlock
 from common.blocks.spotlight import SpotlightBlock
@@ -67,18 +67,18 @@ from common.blocks.collapsebox import CollapseBoxBlock
 from common.blocks.button import ButtonBlock
 
 # Edit Panels
-from wagtail.wagtailadmin.edit_handlers import StreamFieldPanel
-from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel
-from wagtail.wagtailadmin.edit_handlers import FieldPanel
-from wagtail.wagtailadmin.edit_handlers import FieldRowPanel
-from wagtail.wagtailadmin.edit_handlers import InlinePanel
-from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from wagtail.wagtailsnippets.models import register_snippet
-from wagtail.wagtailsnippets.edit_handlers import SnippetChooserPanel
-from wagtail.wagtailforms.models import AbstractEmailForm, AbstractFormField
+from wagtail.admin.edit_handlers import StreamFieldPanel
+from wagtail.admin.edit_handlers import MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel
+from wagtail.admin.edit_handlers import FieldRowPanel
+from wagtail.admin.edit_handlers import InlinePanel
+from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.models import register_snippet
+from wagtail.snippets.edit_handlers import SnippetChooserPanel
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField
 
 # Tagging & Search
-from wagtail.wagtailsearch import index
+from wagtail.search import index
 from modelcluster.fields import ParentalKey
 from modelcluster.models import ClusterableModel
 from taggit.models import TaggedItemBase
@@ -89,9 +89,9 @@ from wagtail.contrib.settings.models import BaseSetting, register_setting
 from website.settings.base import DEFAULT_FOOTER_ID
 DEFAULT_FOOTER_ID = 1
 
-from wagtail.wagtailredirects.models import Redirect
+from wagtail.contrib.redirects.models import Redirect
 from django.utils.translation import ugettext_lazy as _
-from wagtail.wagtailredirects.models import Redirect
+from wagtail.contrib.redirects.models import Redirect
 from modelcluster.fields import ParentalKey
 from django.db.models import CASCADE
 

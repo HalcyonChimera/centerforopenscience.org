@@ -30,8 +30,8 @@ EMAIL_USE_TLS = True
 
 INSTALLED_APPS = [
 
-    'django_comments',
-    'django_comments_xtd',
+    #'django_comments',
+    #'django_comments_xtd',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,22 +51,23 @@ INSTALLED_APPS = [
     "wagtail.contrib.table_block",
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.settings',
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
 
     'modelcluster',
     'taggit',
     'storages',
 
+    #'redis_cache',
     'wagtailfontawesome',
     'search',
     'el_pagination',
@@ -74,19 +75,18 @@ INSTALLED_APPS = [
     'raven.contrib.django.raven_compat',
 ]
 
-MIDDLEWARE_CLASSES = [
+MIDDLEWARE = [
     'common.middleware.URLRedirectMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ES_URL = urlparse(os.environ.get('BONSAI_URL') or 'http://127.0.0.1:9200/')
@@ -132,25 +132,25 @@ SITE_ID = os.environ.get('SITE_ID')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbname',
-        'USER': 'dbuser',
-        'PASSWORD': 'password',
+        'NAME': 'cosio',
+        'USER': 'josh',
+        'PASSWORD': 'itsover9000',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
 
-redis_url = urlparse(os.environ.get('REDIS_URL') or 'http://127.0.0.1:6379')
-CACHES = {
-    "default": {
-         "BACKEND": "redis_cache.RedisCache",
-         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-         "OPTIONS": {
-             "PASSWORD": redis_url.password,
-             "DB": 0,
-         }
-    }
-}
+#redis_url = urlparse(os.environ.get('REDIS_URL') or 'http://127.0.0.1:6379')
+#CACHES = {
+#    "default": {
+#         "BACKEND": "redis_cache.cache.RedisCache",
+#         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+#         "OPTIONS": {
+#             "PASSWORD": redis_url.password,
+#             "DB": 0,
+#         }
+#    }
+#}
 
 #WAGTAILSEARCH_BACKENDS = {
 #    'default': {
